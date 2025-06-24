@@ -1,5 +1,5 @@
-%global haproxy_version 3.1.3
-%global lua_version 5.4.7
+%global haproxy_version 3.2.1
+%global lua_version 5.4.8
 %global haproxy_mainversion %(echo %{haproxy_version} | awk -F. '{print $1 "." $2}')
 
 %global _hardened_build 1
