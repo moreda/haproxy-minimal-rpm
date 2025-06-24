@@ -5,12 +5,13 @@
 .EXPORT_ALL_VARIABLES:
 
 DISTS?=el8 el9
+PLATFORM?=linux/amd64
 
 package:
 	for DIST in $(DISTS); do \
-		docker build --platform linux/amd64 -t $${DIST}-rpm $${DIST}; \
+		docker build --platform $${PLATFORM} -t $${DIST}-rpm $${DIST}; \
 		docker run \
-			--platform linux/amd64 \
+			--platform $${PLATFORM} \
 			--rm \
 			-v $${PWD}/$${DIST}:/docker \
 			-w /docker \
