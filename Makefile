@@ -9,13 +9,13 @@ PLATFORM?=linux/amd64
 
 package:
 	for DIST in $(DISTS); do \
-		docker build --platform $${PLATFORM} -t $${DIST}-rpm $${DIST}; \
+		docker build --platform $${PLATFORM} -t localhost/$${DIST}-rpm $${DIST}; \
 		docker run \
 			--platform $${PLATFORM} \
 			--rm \
-			-v $${PWD}/$${DIST}:/docker \
+			-v $${PWD}/$${DIST}:/docker:Z \
 			-w /docker \
-			$${DIST}-rpm make; \
+			localhost/$${DIST}-rpm make; \
 	done
 
 clean:
